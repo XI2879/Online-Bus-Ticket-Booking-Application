@@ -1,0 +1,351 @@
+{
+	"info": {
+		"_postman_id": "b3541ed5-e278-4dfb-b038-0b84e12075a0",
+		"name": "Bus_Ticket_Booking_apis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33624308"
+	},
+	"item": [
+		{
+			"name": "RouteController",
+			"item": [
+				{
+					"name": "http://localhost:8080/students/create",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2ZW51Z29wYWwiLCJpc3MiOiJ0ZXN0LmNvbSIsImlhdCI6MTcxNDExODQ5OSwiZXhwIjoxNzE0MTE4Nzk5fQ.t6sdGzrALBhD7sWJlvWul9twe49U9Zg6NMjAjN2MKq4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/routes/buses?routeFrom=City A&routeTo=City B&busJourneyDate=2024-05-01",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"routes",
+								"buses"
+							],
+							"query": [
+								{
+									"key": "routeFrom",
+									"value": "City A"
+								},
+								{
+									"key": "routeTo",
+									"value": "City B"
+								},
+								{
+									"key": "busJourneyDate",
+									"value": "2024-05-01"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BusController",
+			"item": [
+				{
+					"name": "http://localhost:8080/buses/admin/add",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"busName\": \"Express Shuttle\",\r\n        \"driverName\": \"John Doe\",\r\n        \"busType\": \"Sleeper\",\r\n        \"busJourneyDate\": \"2024-05-01\",\r\n        \"arrivalTime\": \"08:00:00\",\r\n        \"departureTime\": \"09:00:00\",\r\n        \"seats\": 50,\r\n        \"availableSeats\": 50,\r\n        \"route\": {\r\n        \"routeFrom\": \"City A\",\r\n        \"routeTo\": \"City B\",\r\n        \"distance\": 200\r\n        }\r\n        }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/buses/admin/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"buses",
+								"admin",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ReservationController",
+			"item": [
+				{
+					"name": "http://localhost:8080/buses/reservation/add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2ZW51Z29wYWwiLCJpc3MiOiJ0ZXN0LmNvbSIsImlhdCI6MTcxNDEyMzA3MiwiZXhwIjoxNzE0MTIzMzcyfQ.r63l4FyWWPw_6KuC5dAJVtQ0mk60naRYfohBvBDtH20",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"date\": \"2024-05-01\",\r\n  \"time\": \"08:00:00\",\r\n  \"source\": \"City A\",\r\n  \"destination\": \"City B\",\r\n  \"journeyDate\": \"2024-05-01\",\r\n  \"bookedSeat\": 1,\r\n  \"fare\": 50,\r\n  \"bus\":{\r\n    \"busId\":1\r\n  } ,\r\n  \"user\": {\r\n    \"id\":1\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/buses/reservation/add",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"buses",
+								"reservation",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/buses/reservation/add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2ZW51Z29wYWwiLCJpc3MiOiJ0ZXN0LmNvbSIsImlhdCI6MTcxNDA1MTYyNCwiZXhwIjoxNzE0MDUxOTI0fQ.e76y8IdPJHWZaSuQdN8xqQD2ngTtj98aeyX5OrUeax8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/buses/reservation/delete/{rid}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"buses",
+								"reservation",
+								"delete",
+								"{rid}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/buses/reservation/add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2ZW51Z29wYWwiLCJpc3MiOiJ0ZXN0LmNvbSIsImlhdCI6MTcxNDA1MTYyNCwiZXhwIjoxNzE0MDUxOTI0fQ.e76y8IdPJHWZaSuQdN8xqQD2ngTtj98aeyX5OrUeax8",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/buses/reservation/list/{userid}",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"buses",
+								"reservation",
+								"list",
+								"{userid}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "UserController",
+			"item": [
+				{
+					"name": "http://localhost:8080/buses/reservation/add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2ZW51Z29wYWwiLCJpc3MiOiJ0ZXN0LmNvbSIsImlhdCI6MTcxNDAzMDYyMCwiZXhwIjoxNzE0MDMwOTIwfQ.vKlRvrUw6UU6YffV8s2Up0UDX7xYGko08Sl6I12UXBs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/buses/reservation/add",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ2ZW51Z29wYWwiLCJpc3MiOiJ0ZXN0LmNvbSIsImlhdCI6MTcxNDAzMDYyMCwiZXhwIjoxNzE0MDMwOTIwfQ.vKlRvrUw6UU6YffV8s2Up0UDX7xYGko08Sl6I12UXBs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"venu\",\r\n    \"username\":\"venugopal\",\r\n    \"email\":\"venu@gmail.com\",\r\n    \"password\":\"venu12\"\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "AuthController",
+			"item": [
+				{
+					"name": "http://localhost:8080/api/bus-ticket/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \r\n    \"username\":\"venugopal\",\r\n    \"password\":\"venu12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bus-ticket/auth/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bus-ticket",
+								"auth",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "http://localhost:8080/api/bus-ticket/auth/login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"venu\",\r\n    \"username\":\"venugopal\",\r\n    \"email\":\"venu@gmail.com\",\r\n    \"password\":\"venu12\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/bus-ticket/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"bus-ticket",
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
