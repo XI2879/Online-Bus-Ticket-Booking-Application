@@ -27,6 +27,6 @@ The project follows a structured directory layout, with separate directories for
 ### Version Control
 We use version control to manage the development workflow and track changes to the codebase. Watch the video below to learn more about our version control workflow:
 
-[![Version Control Workflow]()
+[![Project Workflow video]()
 
 For any questions or support, please contact [your contact information here].
